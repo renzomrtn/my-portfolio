@@ -1,0 +1,14 @@
+---
+image: /images/uploads/loob-website.png
+title: Barangay Loob Website
+technologies:
+  - HTML
+  - CSS
+  - Bootstrap
+  - Javascript
+team: PrimeTime
+client: Barangay Loob
+date: 2025-03-12T09:14:06.976Z
+link: none
+---
+A community website donated to Barangay Loob, Gainza. One of the terminal outputs during sophomore year.
