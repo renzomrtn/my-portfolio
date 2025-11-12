@@ -33,32 +33,29 @@
             </div>
         </section>
 
-        <!-- Contact Form (Bootstrap + Netlify) -->
         <section class="container my-5">
             <div class="container">
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
             <div class="form-wrapper">
-                <form name="contact" method="POST" data-netlify="true" action="/success">
-                    <!-- Netlify hidden input -->
-                    <input type="hidden" name="form-name" value="contact">
+                <form name="contact" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact" />
 
                     <div class="mb-4">
                         <label for="name" class="form-label">Full Name</label>
-                        <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your name" required>
+                        <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your name" required />
                         <div class="invalid-feedback">Please enter your name.</div>
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control custom-input" id="email" name="email" placeholder="your@email.com"
-                            required>
+                        <input type="email" class="form-control custom-input" id="email" name="email" placeholder="your@email.com" required />
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
 
                     <div class="mb-4">
                         <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control custom-input" id="subject" name="subject" placeholder="Subject" required>
+                        <input type="text" class="form-control custom-input" id="subject" name="subject" placeholder="Subject" required />
                         <div class="invalid-feedback">Please enter a subject.</div>
                     </div>
 
