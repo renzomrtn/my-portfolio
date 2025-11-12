@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <NuxtLink class="navbar-brand" to="/">
-          <div class="logo-badge">logo</div>
+          <img src="/images/webpage/logo.png" style="width: 50px; height: 50px; border-radius: 20%;" />
         </NuxtLink>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
@@ -34,12 +34,6 @@
         <div class="col-md-4" v-if="project.date">
           <strong>Date:</strong> {{ new Date(project.date).toLocaleDateString() }}
         </div>
-        <div class="col-md-4" v-if="project.link">
-          <strong>Link:</strong> 
-          <a :href="project.link" target="_blank" rel="noopener">
-            {{ project.link }}
-          </a>
-        </div>
       </div>
 
       <!-- Technologies -->
@@ -56,12 +50,22 @@
         </div>
       </div>
 
+      <!-- Link -->
+      <div class="mb-4" v-if="project.link && project.link !== 'none'">
+        <strong>Link:</strong> 
+        <a :href="project.link" target="_blank" class="ms-2">{{ project.link }}</a>
+      </div>
+
       <!-- Description -->
       <div class="project-content">
-        <ContentRenderer :value="project" />
+        <p>{{ project.body }}</p>
       </div>
       
       <NuxtLink to="/" class="btn btn-primary mt-4">Back to Home</NuxtLink>
+    </div>
+
+    <div class="container my-5" v-else>
+      <p>Loading project...</p>
     </div>
   </div>
 </template>
@@ -69,20 +73,13 @@
 <script setup>
 const route = useRoute()
 
-const { data: project } = await useAsyncData('project', () => {
-  return queryContent('projects', route.params.slug).findOne()
-})
+// Fetch project from API
+const { data: project } = await useFetch(`/api/projects/${route.params.slug}`)
+
+console.log('Project data:', project.value)
 </script>
 
 <style scoped>
-.logo-badge {
-  background-color: #ff9999;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 50%;
-  font-weight: bold;
-}
-
 .project-content {
   line-height: 1.8;
   font-size: 1.1rem;

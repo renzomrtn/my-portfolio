@@ -12,7 +12,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="about">About</a>
+                            <a class="nav-link" href="#about">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Contact</a>
@@ -26,31 +26,19 @@
         <section class="hero-section">
             <div class="hero-overlay">
                 <div class="container text-center">
-                    <h1 class="hero-title">Renzomrtn</h1>
                     <p class="hero-text">
-                        Hello, welcome to my portfolio. the background behind is a hero image.
-                        bellow is a collection of projects that leads to a new page
+                        Currently a third year college student. I don't like programming that much. I think freshmen year ruined it for me. But you'll see me making either the most stupid and trash system for fun or a system that makes a difference in the community. I just like bringing ideas into reality.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- About Section -->
         <section class="projects-section py-5">
             <div class="container">
-                <h2 class="text-center mb-5">PROJECTS</h2>
+                <h2 class="text-center mb-5">ABOUT ME</h2>
 
-                <div class="project-grid" v-if="projects && projects.length">
-                    <div v-for="project in projects" :key="project.slug">
-                        <NuxtLink :to="`/project/${project.slug}`">
-                            <img :src="project.image" :alt="project.title" />
-                        </NuxtLink>
-                    </div>
-                </div>
-
-                <div class="text-center" v-else>
-                    <p v-if="error">Error loading projects: {{ error }}</p>
-                    <p v-else>Loading projects...</p>
+                <div class="">
                 </div>
             </div>
         </section>
@@ -87,64 +75,9 @@ const { data: projects, error } = await useFetch('/api/projects')
     padding: 80px 0;
 }
 
-.hero-title {
-    font-size: 4rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
 .hero-text {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto;
-}
-
-.projects-section {
-    background-color: #f8f9fa;
-}
-
-.projects-section h2 {
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.project-card {
-    display: block;
-    overflow: hidden;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    text-decoration: none;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-}
-
-.project-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-</style>
-<style>
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 0;
-    /* No gaps */
-    width: 99vw;
-    /* Full width of viewport */
-    margin-left: 50%;
-    transform: translateX(-50%);
-    /* Cancels parent container centering */
-}
-
-.project-grid img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-    /* Remove image whitespace */
 }
 </style>
