@@ -38,7 +38,7 @@
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
             <div class="form-wrapper">
-                <form name="contact" method="POST" data-netlify="true" action="/">
+                <form name="contact" method="POST" data-netlify="true">
                     <input type="hidden" name="form-name" value="contact" />
 
                     <div class="mb-4">
