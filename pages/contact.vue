@@ -43,26 +43,29 @@
 
                     <div class="mb-4">
                         <label for="name" class="form-label">Full Name</label>
-                        <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your name" required />
+                        <input type="text" class="form-control custom-input" id="name" name="name"
+                            placeholder="Your name" required />
                         <div class="invalid-feedback">Please enter your name.</div>
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control custom-input" id="email" name="email" placeholder="your@email.com" required />
+                        <input type="email" class="form-control custom-input" id="email" name="email"
+                            placeholder="your@email.com" required />
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
 
                     <div class="mb-4">
                         <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control custom-input" id="subject" name="subject" placeholder="Subject" required />
+                        <input type="text" class="form-control custom-input" id="subject" name="subject"
+                            placeholder="Subject" required />
                         <div class="invalid-feedback">Please enter a subject.</div>
                     </div>
 
                     <div class="mb-4">
                         <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control custom-input" id="message" name="message" rows="5" placeholder="Your message..."
-                            required></textarea>
+                        <textarea class="form-control custom-input" id="message" name="message" rows="5"
+                            placeholder="Your message..." required></textarea>
                         <div class="invalid-feedback">Please enter your message.</div>
                     </div>
 
@@ -76,42 +79,41 @@
 </template>
 <script>
 export default {
-  methods: {
-    async handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      
-      // Create FormData and convert to URLSearchParams
-      const formData = new FormData(form);
-      
-      // CRITICAL: Make sure form-name is included
-      const params = new URLSearchParams();
-      params.append('form-name', 'contact');
-      params.append('name', form.querySelector('[name="name"]').value);
-      params.append('email', form.querySelector('[name="email"]').value);
-      params.append('subject', form.querySelector('[name="subject"]').value);
-      params.append('message', form.querySelector('[name="message"]').value);
-      
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString()
-        });
-        
-        console.log('Response status:', response.status);
-        console.log('Response headers:', response.headers);
-        
-        if (response.ok) {
-          alert('Message sent! Thank you.');
-          form.reset();
+
+    methods: {
+        async handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+
+            // Create FormData from the form element
+            const formData = new FormData(form);
+
+            // CRITICAL: Ensure 'form-name' is included for Netlify detection
+            formData.append('form-name', 'contact'); // Use the name from your hidden HTML form
+
+            // Convert formData directly to URLSearchParams for the body
+            const params = new URLSearchParams(formData);
+
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    // Set the required Content-Type header
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: params.toString()
+                });
+
+                // ... rest of your success/error logic
+                if (response.ok) {
+                    alert('Message sent! Thank you.');
+                    form.reset();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
         }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Error: ' + error.message);
-      }
     }
-  }
+
 }
 </script>
 <style scoped>
