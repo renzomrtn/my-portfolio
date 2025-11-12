@@ -32,46 +32,48 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Contact Form (Bootstrap + Netlify) -->
         <section class="container my-5">
             <div class="container">
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
-            <form name="contact" method="POST" data-netlify="true" class="needs-validation" novalidate>
-                <!-- Netlify hidden input -->
-                <input type="hidden" name="form-name" value="contact">
+            <div class="form-wrapper">
+                <form name="contact" method="POST" netlify>
+                    <!-- Netlify hidden input -->
+                    <input type="hidden" name="form-name" value="contact">
 
-                <div class="mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Your name" required>
-                    <div class="invalid-feedback">Please enter your name.</div>
-                </div>
+                    <div class="mb-4">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your name" required>
+                        <div class="invalid-feedback">Please enter your name.</div>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="your@email.com"
-                        required>
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
-                </div>
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control custom-input" id="email" name="email" placeholder="your@email.com"
+                            required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="subject" class="form-label">Subject</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-                    <div class="invalid-feedback">Please enter a subject.</div>
-                </div>
+                    <div class="mb-4">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control custom-input" id="subject" name="subject" placeholder="Subject" required>
+                        <div class="invalid-feedback">Please enter a subject.</div>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your message..."
-                        required></textarea>
-                    <div class="invalid-feedback">Please enter your message.</div>
-                </div>
+                    <div class="mb-4">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control custom-input" id="message" name="message" rows="5" placeholder="Your message..."
+                            required></textarea>
+                        <div class="invalid-feedback">Please enter your message.</div>
+                    </div>
 
-                <div class="text-center">
-                    <button type="submit" class="btn btn-light px-4">Send Message</button>
-                </div>
-            </form>
+                    <div class="text-center">
+                        <button type="submit" class="btn custom-button px-5 py-2">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </section>
     </div>
 </template>
@@ -87,5 +89,36 @@
     display: flex;
     align-items: center;
     color: white;
+}
+
+.form-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.custom-input {
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    height: auto;
+}
+
+.custom-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.custom-button {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-color: black;
 }
 </style>
