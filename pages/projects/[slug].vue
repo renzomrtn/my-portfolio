@@ -58,7 +58,7 @@
 
       <!-- Description -->
       <div class="project-content">
-        <p>{{ project.body }}</p>
+        <p>{{ project.description }}</p>
       </div>
       
       <NuxtLink to="/" class="btn btn-primary mt-4">Back to Home</NuxtLink>
@@ -72,16 +72,13 @@
 
 <script setup>
 const route = useRoute()
+const slug = route.params.slug
 
-// Fetch project from API
-const { data: project } = await useFetch(`/api/projects/${route.params.slug}`)
+// Query by the filename/slug
+const { data: project } = await useAsyncData(`project-${slug}`, () =>
+  queryContent('projects', slug).findOne()
+)
 
+console.log('Slug:', slug)
 console.log('Project data:', project.value)
 </script>
-
-<style scoped>
-.project-content {
-  line-height: 1.8;
-  font-size: 1.1rem;
-}
-</style>

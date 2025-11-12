@@ -19,5 +19,5 @@ collections:
       - {label: "Technologies", name: "technologies", widget: "list", default: []}
       - {label: "Team", name: "team", widget: "string", required: false}
       - {label: "Client", name: "client", widget: "string", required: false}
-      - {label: "Date", name: "date", widget: "date", dateFormat: "MM-DD-YYY", timeFormat: false}
+      - {label: "Date", name: "date", widget: "date", dateFormat: "MM-DD-YYYY", timeFormat: false}
       - {label: "Link", name: "link", widget: "string", required: false}
