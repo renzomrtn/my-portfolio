@@ -26,53 +26,50 @@
         <section class="hero-section">
             <div class="hero-overlay">
                 <div class="container text-center">
-                    <p class="hero-text">
-                        Don't be a creep.
-                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="container my-5">
-            <div class="container">
+        <section class="contact-section">
+            <div class="contact-container">
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
-            </div>
-            <div class="form-wrapper">
-                <form name="contact" @submit.prevent="handleSubmit">
-                    <input type="hidden" name="form-name" value="contact" />
+                <div class="form-wrapper">
+                    <form name="contact" @submit.prevent="handleSubmit">
+                        <input type="hidden" name="form-name" value="contact" />
 
-                    <div class="mb-4">
-                        <label for="name" class="form-label">Full Name</label>
-                        <input type="text" class="form-control custom-input" id="name" name="name"
-                            placeholder="Your name" required />
-                        <div class="invalid-feedback">Please enter your name.</div>
-                    </div>
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control custom-input" id="name" name="name"
+                                placeholder="Your name" required />
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
 
-                    <div class="mb-4">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control custom-input" id="email" name="email"
-                            placeholder="your@email.com" required />
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
-                    </div>
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control custom-input" id="email" name="email"
+                                placeholder="your@email.com" required />
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
 
-                    <div class="mb-4">
-                        <label for="subject" class="form-label">Subject</label>
-                        <input type="text" class="form-control custom-input" id="subject" name="subject"
-                            placeholder="Subject" required />
-                        <div class="invalid-feedback">Please enter a subject.</div>
-                    </div>
+                        <div class="mb-4">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control custom-input" id="subject" name="subject"
+                                placeholder="Subject" required />
+                            <div class="invalid-feedback">Please enter a subject.</div>
+                        </div>
 
-                    <div class="mb-4">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control custom-input" id="message" name="message" rows="5"
-                            placeholder="Your message..." required></textarea>
-                        <div class="invalid-feedback">Please enter your message.</div>
-                    </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control custom-input" id="message" name="message" rows="5"
+                                placeholder="Your message..." required></textarea>
+                            <div class="invalid-feedback">Please enter your message.</div>
+                        </div>
 
-                    <div class="text-center">
-                        <button type="submit" class="btn custom-button px-5 py-2">Send Message</button>
-                    </div>
-                </form>
+                        <div class="text-center">
+                            <button type="submit" class="btn custom-button px-5 py-2">Send Message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
     </div>
@@ -126,6 +123,20 @@ export default {
     display: flex;
     align-items: center;
     color: white;
+}
+
+.contact-section {
+  background: url('/images/webpage/hs.jpg') no-repeat center center;
+}
+
+.contact-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*  background-color: rgba(41, 39, 39, 0.5); 
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); */
+  padding: 2rem;
 }
 
 .form-wrapper {

@@ -34,8 +34,8 @@
         </section>
 
         <!-- About Section -->
-        <section class="projects-section py-5">
-            <div class="container">
+        <section class="about-section">
+            <div class="about-container">
                 <h2 class="text-center mb-5">ABOUT ME</h2>
 
                 <div class="">
@@ -49,3 +49,18 @@
 // Fetch projects via API endpoint instead
 const { data: projects, error } = await useFetch('/api/projects')
 </script>
+
+<style scoped>
+.about-section {
+  background: url('/images/webpage/hs.jpg') no-repeat center center;
+}
+
+.about-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); */
+  padding: 2rem;
+}
+</style>
