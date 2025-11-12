@@ -38,7 +38,7 @@
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
             <div class="form-wrapper">
-                <form name="contact" method="POST" data-netlify="true">
+                <form name="contact" @submit.prevent="handleSubmit">
                     <input type="hidden" name="form-name" value="contact" />
 
                     <div class="mb-4">
@@ -74,6 +74,33 @@
         </section>
     </div>
 </template>
+<script>
+export default {
+  methods: {
+    async handleSubmit(e) {
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+        
+        if (response.ok) {
+          alert('Message sent! Thank you.');
+          form.reset();
+        } else {
+          alert('Error submitting form. Please try again.');
+        }
+      } catch (error) {
+        alert('Error: ' + error.message);
+      }
+    }
+  }
+}
+</script>
 <style scoped>
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
