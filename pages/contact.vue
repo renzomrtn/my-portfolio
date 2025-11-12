@@ -39,7 +39,7 @@
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
             <div class="form-wrapper">
-                <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <form name="contact" method="POST" data-netlify="true" @submit.prevent="handleSubmit">
                     <!-- Netlify hidden input -->
                     <input type="hidden" name="form-name" value="contact">
 
@@ -77,8 +77,27 @@
         </section>
     </div>
 </template>
-
-
+<script>
+export default {
+  methods: {
+    handleSubmit(e) {
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        alert('Form submitted successfully!');
+        form.reset();
+      })
+      .catch((error) => alert('Error: ' + error));
+    }
+  }
+}
+</script>
 <style scoped>
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
