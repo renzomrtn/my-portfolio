@@ -78,23 +78,36 @@
 export default {
   methods: {
     async handleSubmit(e) {
+      e.preventDefault();
       const form = e.target;
+      
+      // Create FormData and convert to URLSearchParams
       const formData = new FormData(form);
+      
+      // CRITICAL: Make sure form-name is included
+      const params = new URLSearchParams();
+      params.append('form-name', 'contact');
+      params.append('name', form.querySelector('[name="name"]').value);
+      params.append('email', form.querySelector('[name="email"]').value);
+      params.append('subject', form.querySelector('[name="subject"]').value);
+      params.append('message', form.querySelector('[name="message"]').value);
       
       try {
         const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
+          body: params.toString()
         });
+        
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
         
         if (response.ok) {
           alert('Message sent! Thank you.');
           form.reset();
-        } else {
-          alert('Error submitting form. Please try again.');
         }
       } catch (error) {
+        console.error('Error:', error);
         alert('Error: ' + error.message);
       }
     }
