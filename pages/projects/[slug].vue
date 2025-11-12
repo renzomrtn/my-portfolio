@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
+              <a class="nav-link" href="/contact">CONTACT</a>
             </li>
           </ul>
         </div>
@@ -82,3 +82,15 @@ const { data: project } = await useAsyncData(`project-${slug}`, () =>
 console.log('Slug:', slug)
 console.log('Project data:', project.value)
 </script>
+
+<style scoped>
+
+.navbar-nav {
+    gap: 50px;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+</style>

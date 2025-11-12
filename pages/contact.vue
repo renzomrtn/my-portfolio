@@ -12,10 +12,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="about">About</a>
+                            <a class="nav-link" href="about">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact">Contact</a>
+                            <a class="nav-link" href="contact">CONTACT</a>
                         </li>
                     </ul>
                 </div>
@@ -32,19 +32,12 @@
                 </div>
             </div>
         </section>
-
-        <!-- About Section -->
-        <section class="projects-section py-5">
-            <div class="container">
-                <h2 class="text-center mb-5">LET'S CONNECT</h2>
-
-                <div class="">
-                </div>
-            </div>
-        </section>
-
+        
         <!-- Contact Form (Bootstrap + Netlify) -->
         <section class="container my-5">
+            <div class="container">
+                <h2 class="text-center mb-5">LET'S CONNECT</h2>
+            </div>
             <form name="contact" method="POST" data-netlify="true" class="needs-validation" novalidate>
                 <!-- Netlify hidden input -->
                 <input type="hidden" name="form-name" value="contact">
@@ -76,39 +69,15 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary px-4">Send Message</button>
+                    <button type="submit" class="btn btn-light px-4">Send Message</button>
                 </div>
             </form>
         </section>
     </div>
 </template>
 
-<!-- Optional: Bootstrap client-side validation -->
-<script>
-  (() => {
-    'use strict'
-    const forms = document.querySelectorAll('.needs-validation')
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    })
-  })()
-</script>
-
 
 <style scoped>
-.navbar-brand img {
-    width: 50px;
-    height: 50px;
-    border-radius: 20%;
-    font-weight: bold;
-}
-
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
         url('/images/webpage/contactbanner.png');
@@ -118,25 +87,5 @@
     display: flex;
     align-items: center;
     color: white;
-}
-
-.hero-overlay {
-    width: 100%;
-    padding: 80px 0;
-}
-
-.hero-text {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.navbar-nav {
-    gap: 50px;
-}
-
-.nav-link {
-    font-size: 1.1rem;
-    font-weight: 500;
 }
 </style>

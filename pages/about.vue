@@ -12,10 +12,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="about">About</a>
+                            <a class="nav-link" href="about">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact">Contact</a>
+                            <a class="nav-link" href="contact">CONTACT</a>
                         </li>
                     </ul>
                 </div>
@@ -49,35 +49,3 @@
 // Fetch projects via API endpoint instead
 const { data: projects, error } = await useFetch('/api/projects')
 </script>
-
-
-<style scoped>
-.navbar-brand img {
-    width: 50px;
-    height: 50px;
-    border-radius: 20%;
-    font-weight: bold;
-}
-
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('/images/webpage/homebanner.png');
-    background-size: cover;
-    background-position: center;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    color: white;
-}
-
-.hero-overlay {
-    width: 100%;
-    padding: 80px 0;
-}
-
-.hero-text {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-</style>
