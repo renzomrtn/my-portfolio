@@ -39,7 +39,7 @@
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
             </div>
             <div class="form-wrapper">
-                <form name="contact" method="POST" netlify>
+                <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
                     <!-- Netlify hidden input -->
                     <input type="hidden" name="form-name" value="contact">
 
