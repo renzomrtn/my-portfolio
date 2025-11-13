@@ -37,8 +37,9 @@
             <div class="contact-container">
                 <h2 class="text-center mb-5">LET'S CONNECT</h2>
                 <div class="form-wrapper">
-                    <form name="contact" @submit.prevent="handleSubmit">
-                        <input type="hidden" name="form-name" value="contact" />
+                    <form action="https://formspree.io/f/xblqlgaa" method="POST">
+                        <input type="hidden" name="_subject" value="Contact from website" />
+                        <input type="hidden" name="_next" value="https://renzomrtn.netlify.app/thank-you" />
 
                         <div class="mb-4">
                             <label for="name" class="form-label">Full Name</label>
@@ -77,45 +78,6 @@
         </section>
     </div>
 </template>
-<script>
-export default {
-
-    methods: {
-        async handleSubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-
-            // Create FormData from the form element
-            const formData = new FormData(form);
-
-            // CRITICAL: Ensure 'form-name' is included for Netlify detection
-            formData.append('form-name', 'contact'); // Use the name from your hidden HTML form
-
-            // Convert formData directly to URLSearchParams for the body
-            const params = new URLSearchParams(formData);
-
-            try {
-                const response = await fetch('/', {
-                    method: 'POST',
-                    // Set the required Content-Type header
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: params.toString()
-                });
-
-                // ... rest of your success/error logic
-                if (response.ok) {
-                    alert('Message sent! Thank you.');
-                    form.reset();
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error: ' + error.message);
-            }
-        }
-    }
-
-}
-</script>
 <style scoped>
 .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
