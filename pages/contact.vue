@@ -15,7 +15,10 @@
                             <a class="nav-link" href="about">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact">CONTACT</a>
+                            <a class="nav-link active" href="contact">CONTACT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/files/MartinFajardo-Resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
                         </li>
                     </ul>
                 </div>
