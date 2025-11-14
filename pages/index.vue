@@ -1,170 +1,657 @@
 <template>
-  <div>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="/images/webpage/logo.png" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="about">ABOUT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact">CONTACT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/files/MartinFajardo-Resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
-            </li>
-          </ul>
+  <div class="steam-portfolio">
+    <!-- Header Navigation -->
+    <nav class="steam-nav">
+      <div class="nav-container">
+        <div class="nav-brand">
+          <img src="/images/webpage/logo.png" alt="Logo" />
+          <h2>Renzomrtn</h2>
+        </div>
+        <div class="nav-links">
+          <a href="about">About</a>
+          <a href="contact">Contact</a>
+          <a href="/files/Resume.pdf" target="_blank">Resume</a>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-overlay">
-        <div class="container text-center">
-          <h1 class="hero-title">Renzomrtn</h1>
-          <p class="hero-text">
-            Design  •  Web Development  •  App Development  •  Cybersecurity  •  Photography  •  Networking
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section">
-      <div class="project-container">
-        <h2 class="text-center mb-5">PROJECTS</h2>
-        <div class="row g-4" v-if="projects && projects.length">
-          <div v-for="project in projects" :key="project._id" class="col-md-3 col-lg-6">
-            <NuxtLink :to="project._path" class="project-card">
-              <img :src="project.image" :alt="project.title" class="img-fluid">
-
-              <!-- Overlay -->
-              <div class="overlay d-flex justify-content-center align-items-center">
-                <h3 class="overlay-title">{{ project.title }}</h3>
+    <div class="content">
+      <video autoplay muted loop playsinline>
+        <source src="https://shared.fastly.steamstatic.com/community_assets/images/items/2642820/c39248bf55f0422f0420c2dd1f0885faae18f3c7.mp4" type="video/mp4" />
+      </video>
+      <!-- Main Profile Section -->
+      <div class="profile-wrapper">
+        <div class="profile-left">
+          <!-- Name and Level Header with Avatar -->
+          <div class="profile-header">
+            <div class="avatar-section">
+              <img src="/images/webpage/avatar.jpg" alt="Profile Avatar" class="avatar-main" />
+            </div>
+            <div class="profile-name-loc-desc">
+              <div class="profile-name">
+                <h1>Renzomrtn</h1>
               </div>
-            </NuxtLink>
+              <div class="location">
+                <img src="https://flagcdn.com/16x12/ph.png" alt="Philippines" />
+                <span>Germany</span>
+              </div>
+              <div class="desc">
+                <p>Gamer | Developer | Tech Enthusiast</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Projects Section -->
+          <div class="recent-projects">
+            <div class="section-header">
+              <p>Recent Projects</p>
+              <span class="activity-time">23.4 hours past 2 weeks</span>
+            </div>
+            <div class="project-holder">
+              <div v-if="projects && projects.length" class="project-list">
+                <NuxtLink v-for="project in projects.slice(0, 3)" :key="project._id" :to="project._path"
+                  class="project-item">
+                  <div class="top">
+                    <div class="project-thumbnail">
+                      <img :src="project.image" :alt="project.title" />
+                    </div>
+                    <div class="project-info">
+                      <h3>{{ project.title }}</h3>
+                      <div class="project-meta">
+                        <span class="hours">{{ project.hours || '0' }} hrs on record</span>
+                        <span class="last-played">last played on {{ formatDate(project.date) }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom">
+                    <div class="achievement-progress">
+                      <span>Project Progress</span>
+                      <span class="achievement-count">{{ project.achievementCount || '0 of 0' }}</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" :style="{ width: project.achievements + '%' }"></div>
+                      </div>
+                    </div>
+                  </div>
+                </NuxtLink>
+              </div>
+            </div>
+
+            <div class="view-all">
+              View
+              <a href="#all-projects">Recently Played</a>
+              <a href="#wishlist">Wishlist</a>
+              <a href="#reviews">Reviews</a>
+            </div>
           </div>
         </div>
-        <div class="text-center" v-else>
-          <p>Loading projects...</p>
+
+        <div class="profile-right">
+          <div class="level">
+            <p class="level-num">Level <span class="circle">21</span></p>
+          </div>
+
+          <div class="badge-card">
+            <div class="featured-badge">
+              <img src="/images/webpage/clbadge.png" alt="Badge" class="badge-image" />
+            </div>
+            <div class="text">
+              <p class="badge-text">Community Leader</p>
+              <p class="badge-subtext">900 EXP</p>
+            </div>
+          </div>
+
+          <div class="info-section">
+            <div class="status-card">
+              <p class="status-text">Currently Online</p>
+            </div>
+
+            <div class="organizations-block">
+              <h6>Organizations <span class="count">3</span></h6>
+              <div class="org-badges">
+                <!-- Add organization badges here -->
+                <img src="/images/webpage/org1.png" alt="Org 1" class="org-badge" />
+                <img src="/images/webpage/org2.png" alt="Org 2" class="org-badge" />
+                <img src="/images/webpage/org3.png" alt="Org 3" class="org-badge" />
+              </div>
+            </div>
+
+            <div class="projects-block">
+              <h6>Projects <span class="count">15</span></h6>
+            </div>
+
+            <div class="about-block">
+              <h6><a href="about">About</a></h6>
+            </div>
+
+            <div class="contact-block">
+              <h6><a href="contact">Contact</a></h6>
+            </div>
+
+            <div class="resume-block">
+              <h6><a href="/files/Resume.pdf">Resume</a></h6>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <footer>
+      <p>RENZOMRTN</p>
+    </footer>
+
+    <!-- All Projects Grid 
+    <div class="all-projects-section" id="all-projects">
+      <h2>All Projects</h2>
+      <div class="projects-grid" v-if="projects && projects.length">
+        <NuxtLink v-for="project in projects" :key="project._id" :to="project._path" class="grid-project-card">
+          <img :src="project.image" :alt="project.title" />
+          <div class="grid-overlay">
+            <h3>{{ project.title }}</h3>
+          </div>
+        </NuxtLink>
+      </div>
+    </div> -->
   </div>
 </template>
 
 <script setup>
-// This should work in both dev and production
-const { data: projects } = await useAsyncData('projects', () => 
+const { data: projects } = await useAsyncData('projects', () =>
   queryContent('projects')
     .sort({ date: -1 })
     .find()
 )
-/*
-console.log('Projects:', projects.value)
-// Check what _path looks like
-if (projects.value) {
-  console.log('First project path:', projects.value[0]?._path)
-}*/
+
+const formatDate = (date) => {
+  if (!date) return 'Recently'
+  const d = new Date(date)
+  return d.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })
+}
 </script>
 
 <style scoped>
-.projects-section {
-  background: url('/images/webpage/hs.jpg') no-repeat center center;
+@import url('https://fonts.cdnfonts.com/css/motiva-sans');
+body {
+  font-family: 'motiva-sans', sans-serif;
 }
 
-.project-container {
-  max-width: 1300px;
+.steam-portfolio {
+  background-color: #000;
+  min-height: 100vh;
+  color: #c7d5e0;
+  font-family: "Motiva Sans", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation */
+.steam-nav {
+  width: 100%;
+  background: #171d25;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); */
-  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  width: 50%;
 }
 
-.projects-section h2 {
-    font-weight: bold;
-    letter-spacing: 2px;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.project-card {
-  display: block;
-  overflow: hidden;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+.nav-brand h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-brand img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #c7d5e0;
   text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* Main Content */
+.content {
+  /* background: url("/images/webpage/hs.jpg") no-repeat center center; backup bg*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.content .profile-wrapper {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+/* Profile Wrapper */
+.profile-wrapper {
+  background: radial-gradient(circle at 20% 30%, rgba(99, 4, 136, 0.9), transparent 70%),
+            radial-gradient(circle at 80% 20%, rgba(50, 0, 40, 0.9), transparent 70%),
+            radial-gradient(circle at 50% 80%, rgba(150, 40, 130, 0.9), transparent 70%),
+            rgba(87, 9, 74, 1);
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  padding: 3rem 2rem 3rem 2rem;
+  width: 50%;
+}
+
+/* Left Section - Avatar */
+.profile-left {
   position: relative;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
+.avatar-section {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  top: 2rem;
 }
 
-/* Image */
-.project-card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+.avatar-main {
+  width: 10rem;
+  height: auto;
+  display: block;
 }
 
-/* Overlay setup */
-.project-card .overlay {
-  position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  background-color: rgba(255, 255, 255, 0.85);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 8px;
+.profile-header {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 2.5rem;
 }
 
-/* Text on overlay */
-.project-card .overlay-title {
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: bold;
+.profile-name-loc-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-name h1 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 100;
+  margin: 0 0 0.5rem 0;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.desc p {
+  color: #8f98a0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #8f98a0;
   text-align: center;
+}
+
+/* Recent Projects */
+.recent-projects {
+  margin-top: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgb(46, 0, 42);
+  padding: 8px;
+}
+
+.project-holder {
+  padding: 15px;
+}
+
+.section-header p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.activity-time {
+  font-size: 0.85rem;
+  color: #8f98a0;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.top {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgb(22, 22, 22);
+  padding: 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.3s;
+}
+
+.project-item:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.project-thumbnail {
+  width: 180px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-info h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: #8f98a0;
+  margin-bottom: 1rem;
+}
+
+.achievement-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8rem;
+  padding: 10px;
+  background-color: rgba(46, 13, 36, 0.93);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4f5152;
+  transition: width 0.3s;
+}
+
+.achievement-count {
+  color: #8f98a0;
+}
+
+.view-all {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.view-all a {
+  color: #66c0f4;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.view-all p {
+  margin-bottom: 0;
+}
+
+.view-all a:hover {
+  color: #fff;
+}
+
+/* Right Sidebar */
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.level-num {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 100;
+}
+
+.level-num p {
+  margin: 0;
+}
+
+.circle {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #c4c4c4; /* outline */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.badge-card {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.badge-card p {
+  margin: 0;
+  font-size: small;
+}
+
+.badge-image {
+  width: 50px;
+}
+
+.info-section {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.organizations-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.org-badges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status-card p{
+  color: #57cbde;
+  font-size: 1.2rem;
+}
+
+.org-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+/* All Projects Grid */
+.all-projects-section {
+
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.all-projects-section h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.grid-project-card {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.grid-project-card:hover {
+  transform: translateY(-5px);
+}
+
+.grid-project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
   opacity: 0;
-  transition: opacity 0.3s ease 0.1s;
+  transition: opacity 0.3s;
 }
 
-/* Hover reveal */
-.project-card:hover .overlay {
+.grid-project-card:hover .grid-overlay {
   opacity: 1;
 }
 
-.project-card:hover .overlay-title {
-  opacity: 1;
+.grid-overlay h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
-</style>
-<style>
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 0;
-    /* No gaps */
-    width: 99vw;
-    /* Full width of viewport */
-    margin-left: 50%;
-    transform: translateX(-50%);
-    /* Cancels parent container centering */
+footer {
+  background: #171d25;
+  padding: 1rem 0;
+  text-align: center;
+  color: #8f98a0;
+  font-size: 0.9rem;
+  margin-top: auto;
 }
 
-.project-grid img {
+footer p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .profile-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-left {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .avatar-section {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    flex-direction: column;
+  }
+
+  .project-thumbnail {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-    /* Remove image whitespace */
+    height: 200px;
+  }
 }
 </style>
