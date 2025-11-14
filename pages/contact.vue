@@ -39,7 +39,6 @@
                 <div class="form-wrapper">
                     <form action="https://formspree.io/f/xblqlgaa" method="POST">
                         <input type="hidden" name="_subject" value="Contact from website" />
-                        <input type="hidden" name="_next" value="https://renzomrtn.netlify.app/thank-you" />
 
                         <div class="mb-4">
                             <label for="name" class="form-label">Full Name</label>
