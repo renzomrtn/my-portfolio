@@ -33,7 +33,7 @@
               </div>
               <div class="location">
                 <img src="https://flagcdn.com/16x12/ph.png" alt="Philippines" />
-                <span>Germany</span>
+                <span>Philippines</span>
               </div>
               <div class="desc">
                 <p>Gamer | Developer | Tech Enthusiast</p>
@@ -56,7 +56,7 @@
                       <img :src="project.image" :alt="project.title" />
                     </div>
                     <div class="project-info">
-                      <h3>{{ project.title }}</h3>
+                      <p>{{ project.title }}</p>
                       <div class="project-meta">
                         <span class="hours">{{ project.hours || '0' }} hrs on record</span>
                         <span class="last-played">last played on {{ formatDate(project.date) }}</span>
@@ -77,7 +77,7 @@
             </div>
 
             <div class="view-all">
-              View
+              <p>View</p>
               <a href="#all-projects">Recently Played</a>
               <a href="#wishlist">Wishlist</a>
               <a href="#reviews">Reviews</a>
@@ -86,17 +86,19 @@
         </div>
 
         <div class="profile-right">
-          <div class="level">
-            <p class="level-num">Level <span class="circle">21</span></p>
-          </div>
-
-          <div class="badge-card">
-            <div class="featured-badge">
-              <img src="/images/webpage/clbadge.png" alt="Badge" class="badge-image" />
+          <div class="level-badge-header">
+            <div class="level">
+              <p class="level-num">Level <span class="circle">21</span></p>
             </div>
-            <div class="text">
-              <p class="badge-text">Community Leader</p>
-              <p class="badge-subtext">900 EXP</p>
+
+            <div class="badge-card">
+              <div class="featured-badge">
+                <img src="/images/webpage/clbadge.png" alt="Badge" class="badge-image" />
+              </div>
+              <div class="text">
+                <p class="badge-text">Community Leader</p>
+                <p class="badge-subtext">900 EXP</p>
+              </div>
             </div>
           </div>
 
@@ -273,9 +275,12 @@ body {
   width: 50%;
 }
 
-/* Left Section - Avatar */
+/* Left Section */
 .profile-left {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0;
 }
 
 .avatar-section {
@@ -292,10 +297,10 @@ body {
 }
 
 .profile-header {
+  height: 160px;
   display: flex;
   justify-content: left;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
   gap: 2.5rem;
 }
 
@@ -333,7 +338,6 @@ body {
 
 /* Recent Projects */
 .recent-projects {
-  margin-top: 2rem;
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -345,7 +349,7 @@ body {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: rgb(46, 0, 42);
-  padding: 8px;
+  padding: 10px 16px 10px 16px;
 }
 
 .project-holder {
@@ -354,9 +358,8 @@ body {
 
 .section-header p {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 16px;
   margin: 0;
-  letter-spacing: 1px;
 }
 
 .activity-time {
@@ -383,7 +386,7 @@ body {
   padding: 1rem;
   border-radius: 4px;
   text-decoration: none;
-  color: inherit;
+  color: #ebebebeb;
   transition: background 0.3s;
 }
 
@@ -409,9 +412,8 @@ body {
   flex: 1;
 }
 
-.project-info h3 {
-  color: #fff;
-  font-size: 1.1rem;
+.project-info p {
+  font-size: 14px;
   margin: 0 0 0.5rem 0;
 }
 
@@ -419,9 +421,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  font-size: 0.85rem;
+  font-size: 13px;
   color: #8f98a0;
   margin-bottom: 1rem;
+  text-align: end;
 }
 
 .achievement-progress {
@@ -454,15 +457,16 @@ body {
 .view-all {
   display: flex;
   gap: 2rem;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 10px 10px 10px;
+  justify-content: flex-end;
+  font-size: 13px;
+  color: #969696;
 }
 
 .view-all a {
-  color: #66c0f4;
+  color: #ebebebeb;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 13px;
   margin-bottom: 0;
 }
 
@@ -471,14 +475,21 @@ body {
 }
 
 .view-all a:hover {
-  color: #fff;
+  color: #57cbde;
 }
 
 /* Right Sidebar */
 .profile-right {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+}
+
+.level-badge-header {
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .level-num {
@@ -503,7 +514,6 @@ body {
   justify-content: center;
 }
 
-
 .badge-card {
   background: rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
@@ -524,11 +534,17 @@ body {
 
 .info-section {
   background: rgba(0, 0, 0, 0.3);
+  color: #ebebebeb;
   padding: 1rem;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.info-section a {
+  color: #ebebebeb;
+  text-decoration: none;
 }
 
 .organizations-block {
