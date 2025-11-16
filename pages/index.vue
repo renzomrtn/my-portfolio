@@ -1,5 +1,15 @@
 <template>
   <div class="steam-portfolio">
+    <!-- Notification bar -->
+    <div v-if="isVisible" class="alert-bar">
+      <div class="alert-content">
+        <span class="alert-icon">🚧</span>
+        <div class="alert-message">
+          This website is currently under construction. Some features may be unavailable.
+        </div>
+        <button class="close-btn" @click="closeAlert" aria-label="Close alert">×</button>
+      </div>
+    </div>
     <!-- Header Navigation -->
     <nav class="steam-nav">
       <div class="nav-container">
@@ -10,14 +20,16 @@
         <div class="nav-links">
           <a href="about">About</a>
           <a href="contact">Contact</a>
-          <a href="/files/Resume.pdf" target="_blank">Resume</a>
+          <a href="/files/MartinFajardo-Resume.pdf" target="_blank">Resume</a>
         </div>
       </div>
     </nav>
 
     <div class="content">
       <video autoplay muted loop playsinline>
-        <source src="https://shared.fastly.steamstatic.com/community_assets/images/items/2642820/c39248bf55f0422f0420c2dd1f0885faae18f3c7.mp4" type="video/mp4" />
+        <source
+          src="https://shared.fastly.steamstatic.com/community_assets/images/items/2642820/c39248bf55f0422f0420c2dd1f0885faae18f3c7.mp4"
+          type="video/mp4" />
       </video>
       <!-- Main Profile Section -->
       <div class="profile-wrapper">
@@ -37,6 +49,7 @@
               </div>
               <div class="desc">
                 <p>Gamer | Developer | Tech Enthusiast</p>
+                <p>WEBSITE UNDER CONSTRUCTION!</p>
               </div>
             </div>
           </div>
@@ -68,7 +81,7 @@
                       <span>Project Progress</span>
                       <span class="progress-count">{{ project.progress || 0 }} of 100</span>
                       <div class="progress-bar">
-                        <div class="progress-fill" :style="{ width: (project.progress || 0 ) + '%' }"></div>
+                        <div class="progress-fill" :style="{ width: (project.progress || 0) + '%' }"></div>
                       </div>
                     </div>
                   </div>
@@ -111,14 +124,22 @@
               <h6>Organizations <span class="count">3</span></h6>
               <div class="org-badges">
                 <!-- Add organization badges here -->
-                <img src="/images/webpage/org1.png" alt="Org 1" class="org-badge" />
-                <img src="/images/webpage/org2.png" alt="Org 2" class="org-badge" />
-                <img src="/images/webpage/org3.png" alt="Org 3" class="org-badge" />
+                <img src="/images/webpage/org1.jpg" alt="Org 1" class="org-badge" />
+                <img src="/images/webpage/org2.jpg" alt="Org 2" class="org-badge" />
+                <img src="/images/webpage/org3.jpg" alt="Org 3" class="org-badge" />
               </div>
             </div>
 
             <div class="projects-block">
               <h6>Projects <span class="count">15</span></h6>
+            </div>
+
+            <div class="photography-block">
+              <h6><a href="photography">Photography</a></h6>
+            </div>
+
+            <div class="guides-block">
+              <h6><a href="guides">Guides</a></h6>
             </div>
 
             <div class="about-block">
@@ -168,10 +189,19 @@ const formatDate = (date) => {
   const d = new Date(date)
   return d.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })
 }
+
+import { ref } from 'vue'
+
+const isVisible = ref(true)
+
+const closeAlert = () => {
+  isVisible.value = false
+}
 </script>
 
 <style scoped>
 @import url('https://fonts.cdnfonts.com/css/motiva-sans');
+
 body {
   font-family: 'motiva-sans', sans-serif;
 }
@@ -265,9 +295,9 @@ body {
 /* Profile Wrapper */
 .profile-wrapper {
   background: radial-gradient(circle at 20% 30%, rgba(99, 4, 136, 0.9), transparent 70%),
-            radial-gradient(circle at 80% 20%, rgba(50, 0, 40, 0.9), transparent 70%),
-            radial-gradient(circle at 50% 80%, rgba(150, 40, 130, 0.9), transparent 70%),
-            rgba(87, 9, 74, 1);
+    radial-gradient(circle at 80% 20%, rgba(50, 0, 40, 0.9), transparent 70%),
+    radial-gradient(circle at 50% 80%, rgba(150, 40, 130, 0.9), transparent 70%),
+    rgba(87, 9, 74, 1);
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 2rem;
@@ -508,7 +538,8 @@ body {
 .circle {
   width: 45px;
   height: 45px;
-  border: 2px solid #c4c4c4; /* outline */
+  border: 2px solid #c4c4c4;
+  /* outline */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -558,7 +589,7 @@ body {
   gap: 0.5rem;
 }
 
-.status-card p{
+.status-card p {
   color: #57cbde;
   font-size: 1.2rem;
 }
@@ -566,7 +597,6 @@ body {
 .org-badge {
   width: 40px;
   height: 40px;
-  border-radius: 4px;
 }
 
 /* All Projects Grid */
@@ -670,5 +700,62 @@ footer p {
     width: 100%;
     height: 200px;
   }
+}
+
+
+/* Alert Bar Styles */
+
+.alert-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+.alert-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.alert-message {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 </style>
