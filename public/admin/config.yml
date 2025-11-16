@@ -21,3 +21,5 @@ collections:
       - {label: "Client", name: "client", widget: "string", required: false}
       - {label: "Date", name: "date", widget: "date", dateFormat: "MM-DD-YYYY", timeFormat: false}
       - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Hours", name: "hours", widget: "number", required: false}
+      - {label: "Progress", name: "progress", widget: "number", required: false}

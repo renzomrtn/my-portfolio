@@ -59,16 +59,16 @@
                       <p>{{ project.title }}</p>
                       <div class="project-meta">
                         <span class="hours">{{ project.hours || '0' }} hrs on record</span>
-                        <span class="last-played">last played on {{ formatDate(project.date) }}</span>
+                        <span class="last-played">last edited on {{ formatDate(project.date) }}</span>
                       </div>
                     </div>
                   </div>
                   <div class="bottom">
-                    <div class="achievement-progress">
+                    <div class="project-progress">
                       <span>Project Progress</span>
-                      <span class="achievement-count">{{ project.achievementCount || '0 of 0' }}</span>
+                      <span class="progress-count">{{ project.progress || 0 }} of 100</span>
                       <div class="progress-bar">
-                        <div class="progress-fill" :style="{ width: project.achievements + '%' }"></div>
+                        <div class="progress-fill" :style="{ width: (project.progress || 0 ) + '%' }"></div>
                       </div>
                     </div>
                   </div>
@@ -78,8 +78,8 @@
 
             <div class="view-all">
               <p>View</p>
-              <a href="#all-projects">Recently Played</a>
-              <a href="#wishlist">Wishlist</a>
+              <a href="#all-projects">Recently Played</a> |
+              <a href="#wishlist">Wishlist</a> |
               <a href="#reviews">Reviews</a>
             </div>
           </div>
@@ -427,7 +427,7 @@ body {
   text-align: end;
 }
 
-.achievement-progress {
+.project-progress {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -439,8 +439,9 @@ body {
 .progress-bar {
   flex: 1;
   height: 8px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(82, 72, 72, 0.4);
   border-radius: 4px;
+  border: rgba(0, 0, 0) 1px solid;
   overflow: hidden;
 }
 
@@ -450,13 +451,13 @@ body {
   transition: width 0.3s;
 }
 
-.achievement-count {
+.progress-count {
   color: #8f98a0;
 }
 
 .view-all {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem 10px 10px 10px;
   justify-content: flex-end;
   font-size: 13px;
