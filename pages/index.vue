@@ -26,11 +26,13 @@
     </nav>
 
     <div class="content">
+      <!--
       <video autoplay muted loop playsinline>
         <source
           src="https://shared.fastly.steamstatic.com/community_assets/images/items/2642820/c39248bf55f0422f0420c2dd1f0885faae18f3c7.mp4"
           type="video/mp4" />
       </video>
+      -->
       <!-- Main Profile Section -->
       <div class="profile-wrapper">
         <div class="profile-left">
@@ -151,7 +153,7 @@
             </div>
 
             <div class="resume-block">
-              <h6><a href="/files/Resume.pdf">Resume</a></h6>
+              <h6><a href="/files/MartinFajardo-Resume.pdf" target="_blank">Resume</a></h6>
             </div>
           </div>
         </div>
