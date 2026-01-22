@@ -56,3 +56,7 @@ body {
     font-weight: 700 !important;
     border-bottom: 2px solid #e0e0e0 !important;
 }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0px !important;
+}

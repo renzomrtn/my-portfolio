@@ -26,13 +26,26 @@
     </nav>
 
     <div class="content">
-      <!--
+      <!-- HentStories LB
       <video autoplay muted loop playsinline>
         <source
           src="https://shared.fastly.steamstatic.com/community_assets/images/items/2642820/c39248bf55f0422f0420c2dd1f0885faae18f3c7.mp4"
           type="video/mp4" />
       </video>
       -->
+      <!-- SweetShine LB from backgrounds.gallery
+      <video autoplay muted loop playsinline>
+        <source
+          src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1636420/c588325b959d8f9abe102f95dbffee8b2b069761.mp4"
+          type="video/mp4" />
+      </video>
+      -->
+      <!-- LB from backgrounds.gallery -->
+      <video autoplay muted loop playsinline>
+        <source
+          src="https://cdn.akamai.steamstatic.com/steamcommunity/public/images/items/1876560/52fda1e426d9e5407530e51b1d8959f1b17b564d.mp4"
+          type="video/mp4" />
+      </video>
       <!-- Main Profile Section -->
       <div class="profile-wrapper">
         <div class="profile-left">
@@ -90,12 +103,40 @@
                 </NuxtLink>
               </div>
             </div>
+          </div>
 
-            <div class="view-all">
-              <p>View</p>
-              <a href="#all-projects">Recently Played</a> |
-              <a href="#wishlist">Wishlist</a> |
-              <a href="#reviews">Reviews</a>
+          <div class="recent-photos">
+            <div class="section-header">
+              <p>Recent Photos</p>
+              <span class="activity-time">23.4 hours past 2 weeks</span>
+            </div>
+            <div class="project-holder">
+              <div v-if="projects && projects.length" class="project-list">
+                <NuxtLink v-for="project in projects.slice(0, 3)" :key="project._id" :to="project._path"
+                  class="project-item">
+                  <div class="top">
+                    <div class="project-thumbnail">
+                      <img :src="project.image" :alt="project.title" />
+                    </div>
+                    <div class="project-info">
+                      <p>{{ project.title }}</p>
+                      <div class="project-meta">
+                        <span class="hours">{{ project.hours || '0' }} hrs on record</span>
+                        <span class="last-played">last edited on {{ formatDate(project.date) }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottom">
+                    <div class="project-progress">
+                      <span>Project Progress</span>
+                      <span class="progress-count">{{ project.progress || 0 }} of 100</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" :style="{ width: (project.progress || 0) + '%' }"></div>
+                      </div>
+                    </div>
+                  </div>
+                </NuxtLink>
+              </div>
             </div>
           </div>
         </div>
@@ -153,21 +194,21 @@
                 <div class="org">
                   <img src="/images/webpage/org1.jpg" alt="Org 1" class="org-badge" />
                   <div class="texts">
-                    <h6>UNC SHS Supreme Student Government</h6>
+                    <h6 class="org-name">UNC SHS Supreme Student Government</h6>
                     <p>2023</p>
                   </div>
                 </div>
                 <div class="org">
                   <img src="/images/webpage/org2.jpg" alt="Org 2" class="org-badge" />
                   <div class="texts">
-                    <h6>UNC Reserve Officers Training Corps</h6>
+                    <h6 class="org-name">UNC Reserve Officers Training Corps</h6>
                     <p>2023 - Present</p>
                   </div>
                 </div>
                 <div class="org">
                   <img src="/images/webpage/org3.jpg" alt="Org 3" class="org-badge" />
                   <div class="texts">
-                    <h6>Black Box Society</h6>
+                    <h6 class="org-name">Black Box Society</h6>
                     <p>2023 - Present</p>
                   </div>
                 </div>
@@ -228,7 +269,7 @@ body {
 }
 
 .steam-portfolio {
-  background-color: #000;
+  background-color: #ffffff;
   min-height: 100vh;
   color: #c7d5e0;
   font-family: "Motiva Sans", Arial, sans-serif;
@@ -288,7 +329,6 @@ body {
 /* Main Content */
 .content {
   /* background: url("/images/webpage/hs.jpg") no-repeat center center; backup bg*/
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,10 +338,8 @@ body {
 
 .content video {
   position: absolute;
-  top: 50%;
   left: 50%;
   width: 100%;
-  height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: 0;
@@ -318,7 +356,7 @@ body {
   background: radial-gradient(circle at 20% 30%, rgba(99, 4, 136, 0.9), transparent 70%),
     radial-gradient(circle at 80% 20%, rgba(50, 0, 40, 0.9), transparent 70%),
     radial-gradient(circle at 50% 80%, rgba(150, 40, 130, 0.9), transparent 70%),
-    rgba(87, 9, 74, 1);
+    rgba(87, 9, 74, 0.1);
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 1rem;
@@ -387,8 +425,8 @@ body {
   text-align: center;
 }
 
-/* Recent Projects */
-.recent-projects {
+/* Recents */
+.recent-projects, .recent-photos {
   background: rgba(0, 0, 0, 0.3);
 }
 
@@ -506,30 +544,6 @@ body {
   color: #8f98a0;
 }
 
-.view-all {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 10px 10px 10px;
-  justify-content: flex-end;
-  font-size: 13px;
-  color: #969696;
-}
-
-.view-all a {
-  color: #ebebebeb;
-  text-decoration: none;
-  font-size: 13px;
-  margin-bottom: 0;
-}
-
-.view-all p {
-  margin-bottom: 0;
-}
-
-.view-all a:hover {
-  color: #57cbde;
-}
-
 /* Right Sidebar */
 .profile-right {
   display: flex;
@@ -603,6 +617,7 @@ body {
 .organizations-block {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .org {
@@ -625,7 +640,17 @@ body {
 }
 
 .org-badge {
-  width: 5rem;
+  width: 4.2rem;
+}
+
+.org-name {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.texts p {
+  font-size: 12px;
+  color: #8f98a0;
 }
 
 .count {
