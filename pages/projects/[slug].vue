@@ -1,26 +1,5 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <NuxtLink class="navbar-brand" to="/">
-          <img src="/images/webpage/logo.png" style="width: 50px; height: 50px; border-radius: 20%;" />
-        </NuxtLink>
-        <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/about">ABOUT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">CONTACT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/files/MartinFajardo-Resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+  <section>
     <div class="container my-5" v-if="project">
       <h1>{{ project.title }}</h1>
       
@@ -70,7 +49,7 @@
     <div class="container my-5" v-else>
       <p>Loading project...</p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -87,6 +66,9 @@ console.log('Project data:', project.value)
 </script>
 
 <style scoped>
+section {
+  background-color: #000000;
+}
 
 .navbar-nav {
     gap: 50px;
