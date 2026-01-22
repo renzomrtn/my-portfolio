@@ -122,16 +122,6 @@
               <p class="status-text">Currently Online</p>
             </div>
 
-            <div class="organizations-block">
-              <h6>Organizations <span class="count">3</span></h6>
-              <div class="org-badges">
-                <!-- Add organization badges here -->
-                <img src="/images/webpage/org1.jpg" alt="Org 1" class="org-badge" />
-                <img src="/images/webpage/org2.jpg" alt="Org 2" class="org-badge" />
-                <img src="/images/webpage/org3.jpg" alt="Org 3" class="org-badge" />
-              </div>
-            </div>
-
             <div class="projects-block">
               <h6>Projects <span class="count">15</span></h6>
             </div>
@@ -155,6 +145,35 @@
             <div class="resume-block">
               <h6><a href="/files/MartinFajardo-Resume.pdf" target="_blank">Resume</a></h6>
             </div>
+
+            <div class="organizations-block">
+              <h6>Organizations <span class="count">3</span></h6>
+              <div class="org-badges">
+                <!-- Add organization badges here -->
+                <div class="org">
+                  <img src="/images/webpage/org1.jpg" alt="Org 1" class="org-badge" />
+                  <div class="texts">
+                    <h6>UNC SHS Supreme Student Government</h6>
+                    <p>2023</p>
+                  </div>
+                </div>
+                <div class="org">
+                  <img src="/images/webpage/org2.jpg" alt="Org 2" class="org-badge" />
+                  <div class="texts">
+                    <h6>UNC Reserve Officers Training Corps</h6>
+                    <p>2023 - Present</p>
+                  </div>
+                </div>
+                <div class="org">
+                  <img src="/images/webpage/org3.jpg" alt="Org 3" class="org-badge" />
+                  <div class="texts">
+                    <h6>Black Box Society</h6>
+                    <p>2023 - Present</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -302,7 +321,7 @@ body {
     rgba(87, 9, 74, 1);
   display: grid;
   grid-template-columns: 1fr 280px;
-  gap: 2rem;
+  gap: 1rem;
   padding: 3rem 2rem 3rem 2rem;
   width: 50%;
 }
@@ -586,8 +605,17 @@ body {
   flex-direction: column;
 }
 
+.org {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 100%;
+}
+
 .org-badges {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
 }
 
@@ -597,8 +625,13 @@ body {
 }
 
 .org-badge {
-  width: 40px;
-  height: 40px;
+  width: 5rem;
+}
+
+.count {
+  color: #8f98a0;
+  font-size: 1.5rem;
+  font-weight: 100;
 }
 
 /* All Projects Grid */
