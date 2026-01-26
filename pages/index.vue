@@ -269,7 +269,7 @@ body {
 }
 
 .steam-portfolio {
-  background-color: #ffffff;
+  background-color: #000000;
   min-height: 100vh;
   color: #c7d5e0;
   font-family: "Motiva Sans", Arial, sans-serif;
@@ -338,10 +338,12 @@ body {
 
 .content video {
   position: absolute;
+  top: 0;
   left: 50%;
   width: 100%;
+  height: auto;
   object-fit: cover;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 0;
 }
 
