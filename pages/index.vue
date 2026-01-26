@@ -51,8 +51,10 @@
         <div class="profile-left">
           <!-- Name and Level Header with Avatar -->
           <div class="profile-header">
-            <div class="avatar-section">
-              <img src="/images/webpage/avatar.jpg" alt="Profile Avatar" class="avatar-main" />
+            <div class="avatar-section avatar neon">
+              <div class="avatar neon">
+                <img src="/images/webpage/avatar.jpg" alt="Profile Avatar" class="avatar-main" />
+              </div>
             </div>
             <div class="profile-name-loc-desc">
               <div class="profile-name">
@@ -378,13 +380,38 @@ body {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   overflow: hidden;
-  top: 2rem;
 }
 
 .avatar-main {
-  width: 10rem;
+  width: 7.5rem;
   height: auto;
   display: block;
+}
+
+.avatar {
+  position: relative;
+  padding: 6px;
+}
+
+.avatar img {
+  object-fit: cover;
+}
+
+.avatar.neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+  box-shadow:
+    0 0 8px  #00fff0,
+    0 0 16px #00c8ff,
+    0 0 32px #0066ff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
 .profile-header {
