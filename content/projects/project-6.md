@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/eloob.png
+image: /images/uploads/projects/eloob.png
 title: "eLOOB: Barangay Management System"
 technologies:
   - Vue

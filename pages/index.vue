@@ -89,7 +89,7 @@
                       <p>{{ project.title }}</p>
                       <div class="project-meta">
                         <span class="hours">{{ project.hours || '0' }} hrs on record</span>
-                        <span class="last-played">last edited on {{ formatDate(project.date) }}</span>
+                        <span class="last-played">Date: {{ formatDate(project.date) }}</span>
                       </div>
                     </div>
                   </div>
@@ -110,30 +110,19 @@
           <div class="recent-photos">
             <div class="section-header">
               <p>Recent Photos</p>
-              <span class="activity-time">23.4 hours past 2 weeks</span>
             </div>
-            <div class="project-holder">
-              <div v-if="projects && projects.length" class="project-list">
-                <NuxtLink v-for="project in projects.slice(0, 3)" :key="project._id" :to="project._path"
-                  class="project-item">
+            <div class="photos-holder">
+              <div v-if="photos && photos.length" class="photo-list">
+                <NuxtLink v-for="photos in photos.slice(0, 3)" :key="photos._id" :to="photos._path"
+                  class="photo-item">
                   <div class="top">
-                    <div class="project-thumbnail">
-                      <img :src="project.image" :alt="project.title" />
+                    <div class="photo-thumbnail">
+                      <img :src="photos.image" :alt="photos.title" />
                     </div>
-                    <div class="project-info">
-                      <p>{{ project.title }}</p>
-                      <div class="project-meta">
-                        <span class="hours">{{ project.hours || '0' }} hrs on record</span>
-                        <span class="last-played">last edited on {{ formatDate(project.date) }}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bottom">
-                    <div class="project-progress">
-                      <span>Project Progress</span>
-                      <span class="progress-count">{{ project.progress || 0 }} of 100</span>
-                      <div class="progress-bar">
-                        <div class="progress-fill" :style="{ width: (project.progress || 0) + '%' }"></div>
+                    <div class="photo-info">
+                      <p>{{ photos.title }}</p>
+                      <div class="photo-meta">
+                        <span class="last-played">Captured on {{ formatDate(photos.date) }}</span>
                       </div>
                     </div>
                   </div>
@@ -242,6 +231,12 @@
 </template>
 
 <script setup>
+const { data: photos } = await useAsyncData('photos', () =>
+  queryContent('photos')
+    .sort({ date: -1 })
+    .find()
+)
+
 const { data: projects } = await useAsyncData('projects', () =>
   queryContent('projects')
     .sort({ date: -1 })
@@ -470,7 +465,7 @@ body {
   padding: 10px 16px 10px 16px;
 }
 
-.project-holder {
+.project-holder, .photos-holder {
   padding: 15px;
 }
 
@@ -485,7 +480,7 @@ body {
   color: #8f98a0;
 }
 
-.project-list {
+.project-list, .photo-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -496,7 +491,7 @@ body {
   gap: 1rem;
 }
 
-.project-item {
+.project-item, .photo-item {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -508,7 +503,7 @@ body {
   transition: background 0.3s;
 }
 
-.project-item:hover {
+.project-item:hover, .photo-item:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -520,17 +515,25 @@ body {
   overflow: hidden;
 }
 
-.project-thumbnail img {
+.photo-thumbnail {
+  width: 300px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.project-thumbnail img, .photo-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.project-info {
+.project-info, .photo-info {
   flex: 1;
 }
 
-.project-info p {
+.project-info p, .photo-info p {
   font-size: 14px;
   margin: 0 0 0.5rem 0;
 }
@@ -543,6 +546,15 @@ body {
   color: #8f98a0;
   margin-bottom: 1rem;
   text-align: end;
+}
+
+.photo-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 13px;
+  color: #8f98a0;
+  margin-top: 0.5rem;
 }
 
 .project-progress {

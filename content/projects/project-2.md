@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/flixplus.png
+image: /images/uploads/projects/flixplus.png
 title: Flixplus
 technologies:
   - React.js

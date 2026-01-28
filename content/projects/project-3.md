@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/digitek-website.png
+image: /images/uploads/projects/digitek-website.png
 title: Digitek Website
 technologies:
   - HTML

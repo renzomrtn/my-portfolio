@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/loob-website.png
+image: /images/uploads/projects/loob-website.png
 title: Barangay Loob Website
 technologies:
   - HTML

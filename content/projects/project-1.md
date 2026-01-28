@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/project-anatomy.png
+image: /images/uploads/projects/project-anatomy.png
 title: Project Anatomy
 technologies:
   - Construct 3

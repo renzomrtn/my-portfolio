@@ -1,5 +1,5 @@
 ---
-image: /images/uploads/cuddle-coupon.png
+image: /images/uploads/projects/cuddle-coupon.png
 title: Cuddle Coupon
 technologies:
   - HTML
