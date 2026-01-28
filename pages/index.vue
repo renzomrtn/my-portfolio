@@ -65,8 +65,8 @@
                 <span>Philippines</span>
               </div>
               <div class="desc">
-                <p>Gamer | Developer | Tech Enthusiast</p>
-                <p>WEBSITE UNDER CONSTRUCTION!</p>
+                <p>Photographer | Developer | Tech Enthusiast</p>
+                <p>I play games too from time to time.</p>
               </div>
             </div>
           </div>
@@ -166,6 +166,10 @@
               <h6><a href="guides">Guides</a></h6>
             </div>
 
+            <div class="micro-block">
+              <h6><a href="micro-creds">Micro-Credentials</a></h6>
+            </div>
+
             <div class="about-block">
               <h6><a href="about">About</a></h6>
             </div>
@@ -186,7 +190,7 @@
                   <img src="/images/webpage/org1.jpg" alt="Org 1" class="org-badge" />
                   <div class="texts">
                     <h6 class="org-name">UNC SHS Supreme Student Government</h6>
-                    <p>2023</p>
+                    <p>2022 - 2023</p>
                   </div>
                 </div>
                 <div class="org">
