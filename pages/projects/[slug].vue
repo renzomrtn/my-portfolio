@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container my-5" v-if="project">
+    <div class="container" v-if="project">
       <h1>{{ project.title }}</h1>
       
       <img :src="project.image" :alt="project.title" class="img-fluid my-4 rounded">
@@ -61,12 +61,13 @@ const { data: project } = await useAsyncData(`project-${slug}`, () =>
   queryContent('projects', slug).findOne()
 )
 
-console.log('Slug:', slug)
-console.log('Project data:', project.value)
+// console.log('Slug:', slug)
+// console.log('Project data:', project.value)
 </script>
 
 <style scoped>
 section {
+padding: 60px 0;
   background-color: #000000;
 }
 
