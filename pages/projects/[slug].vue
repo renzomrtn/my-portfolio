@@ -67,7 +67,7 @@ const { data: project } = await useAsyncData(`project-${slug}`, () =>
 
 <style scoped>
 section {
-padding: 60px 0;
+  padding: 60px 0;
   background-color: #000000;
 }
 
