@@ -1,4 +1,5 @@
 <template>
+  <HeaderView />
   <section>
     <div class="photo-detail">
       <div class="photo-container">
@@ -36,10 +37,12 @@
       </div>
     </div>
   </section>
-
+  <FooterView />
 </template>
 
 <script setup>
+import FooterView from '~/components/FooterView.vue'
+
 const route = useRoute()
 const slug = route.params.slug
 

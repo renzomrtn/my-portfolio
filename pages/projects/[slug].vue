@@ -1,4 +1,5 @@
 <template>
+  <HeaderView />
   <section>
     <div class="container" v-if="project">
       <h1>{{ project.title }}</h1>
@@ -50,9 +51,13 @@
       <p>Loading project...</p>
     </div>
   </section>
+  <FooterView />
 </template>
 
 <script setup>
+import FooterView from '~/components/FooterView.vue';
+import HeaderView from '~/components/HeaderView.vue';
+
 const route = useRoute()
 const slug = route.params.slug
 
